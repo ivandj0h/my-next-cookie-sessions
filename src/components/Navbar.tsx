@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { FiSun, FiMoon, FiImage } from "react-icons/fi";
+import { FiSun, FiMoon } from "react-icons/fi";
+import { FaCookie } from "react-icons/fa";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -30,11 +31,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md py-4 px-8 flex justify-between items-center">
+    <nav className="bg-white dark:bg-black shadow-md py-4 px-8 flex justify-between items-center">
       <Link href="/" legacyBehavior>
         <a className="flex items-center text-gray-900 dark:text-white">
-          <FiImage className="mr-2 text-gray-900 dark:text-white" />
-          Image Management App
+          <FaCookie className="mr-2 text-gray-900 dark:text-white" />
+          MY NEXTCOOKIE SESSIONS
         </a>
       </Link>
       <div className="flex items-center">
@@ -49,12 +50,29 @@ export default function Navbar() {
           )}
           {theme === "light" ? " " : " "}
         </button>
-        <Link href="/photos" legacyBehavior>
+        <Link href="/premium" legacyBehavior>
           <a className=" text-gray-900 dark:text-white rounded-full p-2 transition-all">
-            View All Photos
+            Premium
+          </a>
+        </Link>
+        <Link href="/profile" legacyBehavior>
+          <a className=" text-gray-900 dark:text-white rounded-full p-2 transition-all">
+            Profile
+          </a>
+        </Link>
+        <Link href="/login" legacyBehavior>
+          <a className=" text-gray-900 dark:text-white rounded-full p-2 transition-all">
+            Login
+          </a>
+        </Link>
+        <Link href="/logout" legacyBehavior>
+          <a className=" text-gray-900 dark:text-white rounded-full p-2 transition-all">
+            Logout
           </a>
         </Link>
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
